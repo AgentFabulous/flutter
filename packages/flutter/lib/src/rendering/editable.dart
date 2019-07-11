@@ -1474,6 +1474,11 @@ class RenderEditable extends RenderBox {
       final TextSelection lastWord = to == null ?
         firstWord : _selectWordAtOffset(_textPainter.getPositionForOffset(globalToLocal(to - _paintOffset)));
 
+      if (selection.baseOffset == 0 && selection.baseOffset == 0 &&
+          firstWord.base.offset == 0 && lastWord.extent.offset == 0) {
+        selection = selection.copyWith(baseOffset: -1, extentOffset: -1);
+      }
+
       _handlePotentialSelectionChange(
         TextSelection(
           baseOffset: firstWord.base.offset,
