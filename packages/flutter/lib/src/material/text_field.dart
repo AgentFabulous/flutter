@@ -662,6 +662,9 @@ class _TextFieldState extends State<TextField> with AutomaticKeepAliveClientMixi
     if (widget.readOnly && _effectiveController.selection.isCollapsed)
       return false;
 
+    if (_effectiveController.text.isEmpty)
+      return false;
+
     if (cause == SelectionChangedCause.longPress)
       return true;
 
